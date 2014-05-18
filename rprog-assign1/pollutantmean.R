@@ -15,11 +15,18 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     
     totalCount <- 0
     totalSum <- 0
+
     for (file in fileNames) {
         data <- read.csv(file,header=T)
         notNA <- !is.na(data[pollutant])
-        totalCount <- totalCount + length(which(notNA))
-        totalSum <- totalSum + sum(data[pollutant],na.rm=T)
+        if (sum(notNA) > 0) {
+            totalCount <- totalCount + length(which(notNA))
+            totalSum <- totalSum + sum(data[pollutant],na.rm=T)
+        } 
     }
-    totalSum/totalCount
+    if (totalCount > 0) {
+        totalSum/totalCount
+    } else {
+        0
+    }
 }
