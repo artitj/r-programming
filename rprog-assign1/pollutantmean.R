@@ -11,7 +11,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     
     ## Return the mean of the pollutant across all monitors list
     ## in the 'id' vector (ignoring NA values)
-    fileNames <- file.path("specdata",sprintf("%03i.csv",id))
+    fileNames <- file.path(directory,sprintf("%03i.csv",id))
     
     totalCount <- 0
     totalSum <- 0

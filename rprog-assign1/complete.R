@@ -13,11 +13,11 @@ complete <- function(directory, id = 1:332) {
     ## where 'id' is the monitor ID number and 'nobs' is the
     ## number of complete cases
     
-    fileNames <- file.path("specdata",sprintf("%03i.csv",id))
+    fileNames <- file.path(directory,sprintf("%03i.csv",id))
 
     output <- data.frame(id=id,nobs=0)
     for (i in id) {
-        file <- file.path("specdata",sprintf("%03i.csv",i))
+        file <- file.path(directory,sprintf("%03i.csv",i))
         data <- read.csv(file,header=T)
         good <- complete.cases(data)
         numComplete <- sum(good)
